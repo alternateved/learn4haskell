@@ -6,7 +6,7 @@ let
   inherit (pkgs) haskellPackages;
   haskellTools = with haskellPackages; [ ghc cabal-install ];
 
-in pkgs.stdenv.mkDerivation {
+in pkgs.mkShell {
   name = "haskellEnv";
   buildInputs = haskellTools;
   shellHook = ''
