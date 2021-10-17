@@ -1,21 +1,23 @@
-{ nixpkgs ? import (fetchTarball
-  "https://github.com/NixOS/nixpkgs/archive/9bf75dd50b7b6d3ce6aaf6563db95f41438b9bdb.tar.gz")
-  { } }:
-
 let
-  inherit (nixpkgs) pkgs;
-  inherit (pkgs) haskellPackages;
-  haskellTools = with haskellPackages; [
+  pkgs = import ./packages.nix { };
+  package = import ./.;
+
+  haskellTools = with pkgs; [
     ghc
     ghcid
     cabal-install
-    hindent
-    ormolu
+    haskellPackages.hindent
+    haskellPackages.hoogle
+    haskellPackages.ormolu
+    haskellPackages.haskell-language-server
   ];
 
+  haskellDeps = with pkgs; [ doctest ];
+
 in pkgs.mkShell {
-  name = "haskellEnv";
-  buildInputs = haskellTools;
+  nativeBuildInputs = [ pkgs.pkg-config ];
+  inputsFrom = [ package.env ];
+  buildInputs = haskellTools ++ haskellDeps;
   shellHook = ''
     export PS1="\[hs:\033[1;32m\]\W\[\033[0m\] ~ "
   '';
