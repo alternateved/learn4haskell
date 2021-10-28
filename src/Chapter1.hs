@@ -650,7 +650,7 @@ sumLast2 :: Integral a => a -> a
 sumLast2 n = last + last2
   where
     n'    = abs n
-    last  = mod n' 10
+    last1  = mod n' 10
     last2 = mod (div n' 10) 10
 
 {- |
