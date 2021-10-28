@@ -647,10 +647,10 @@ specifying complex expressions.
 -}
 
 sumLast2 :: Integral a => a -> a
-sumLast2 n = last + last2
+sumLast2 n = last1 + last2
   where
     n'    = abs n
-    last1  = mod n' 10
+    last1 = mod n' 10
     last2 = mod (div n' 10) 10
 
 {- |
@@ -673,10 +673,10 @@ aren't ready for this boss yet!
 
 firstDigit :: Integral a => a -> a
 firstDigit n
-  | n' < 10    = n'
+  | n' < 10   = n'
   | otherwise = firstDigit $ div n' 10
     where
-    n'    = abs n
+    n'        = abs n
 
 {-
 You did it! Now it is time to open a pull request with your changes
