@@ -556,7 +556,7 @@ value after "=" where the condition is true.
 Casual reminder about adding top-level type signatures for all functions :)
 -}
 
-mid :: (Num a, Ord a) => a -> a -> a -> a
+mid :: Ord a => a -> a -> a -> a
 mid x y z
     | x /= localMax && x /= localMin = x
     | y /= localMax && y /= localMin = y
