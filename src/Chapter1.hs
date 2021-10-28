@@ -562,7 +562,6 @@ mid x y z
     | y /= localMax && y /= localMin = y
     -- if there are two numbers equal return one of those numbers
     | x == y        && x /= z        = x
-    | z == y        && x /= z        = z
     | otherwise                      = z
   where
     localMax = max x (max y z)
