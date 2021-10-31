@@ -1078,7 +1078,7 @@ implement the following functions:
 🕯 HINT: to implement this task, derive some standard typeclasses
 -}
 data Week = Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday
-  deriving (Show, Eq, Enum)
+  deriving (Show, Eq, Enum, Bounded)
 
 isWeekend :: Week -> Bool
 isWeekend Saturday = True
@@ -1086,8 +1086,9 @@ isWeekend Sunday = True
 isWeekend _ = False
 
 nextDay :: Week -> Week
-nextDay Sunday = Monday
-nextDay day = succ day
+nextDay day
+  | day == maxBound = minBound
+  | otherwise = succ day
 
 daysToParty :: Week -> Int
 daysToParty start = length (enumFromTo start Friday) - 1
