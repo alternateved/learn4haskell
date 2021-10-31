@@ -641,7 +641,9 @@ takeEven l = go 0 l
   where
     go :: Int -> [a] -> [a]
     go _ [] = []
-    go i (x:xs) = if mod i 2 == 0 then x : (go (i + 1)) xs else go (i + 1) xs
+takeEven :: [a] -> [a]
+takeEven (x:_:xs) = x : takeEven xs
+takeEven y = y
 
 {- |
 =🛡= Higher-order functions
