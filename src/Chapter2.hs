@@ -640,11 +640,6 @@ Write a function that takes elements of a list only in even positions.
 [2,3,4]
 -}
 takeEven :: [a] -> [a]
-takeEven l = go 0 l
-  where
-    go :: Int -> [a] -> [a]
-    go _ [] = []
-takeEven :: [a] -> [a]
 takeEven (x:_:xs) = x : takeEven xs
 takeEven y = y
 
@@ -870,9 +865,6 @@ list.
 rotate :: Int -> [a] -> [a]
 rotate x l
   | x < 0 = []
-rotate :: Int -> [a] -> [a]
-rotate x l
-  | x < 0 = []
   | otherwise = take lenL $ drop x' (cycle l)
   where
     lenL = length l
@@ -892,8 +884,6 @@ and reverses it.
   function, but in this task, you need to implement it manually. No
   cheating!
 -}
-rewind :: [a] -> [a]
-rewind [] = []
 rewind :: [a] -> [a]
 rewind l = go l []
   where
