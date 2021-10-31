@@ -513,6 +513,7 @@ instance Applicative List where
 
 concatList :: List a -> List a -> List a
 concatList Empty ys = ys
+concatList ys Empty = ys
 concatList (Cons x xs) ys = Cons x (concatList xs ys)
 
 {- |
