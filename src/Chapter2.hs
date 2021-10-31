@@ -891,7 +891,11 @@ and reverses it.
 -}
 rewind :: [a] -> [a]
 rewind [] = []
-rewind (x:xs) = rewind xs ++ [x]
+rewind :: [a] -> [a]
+rewind l = go l []
+  where
+    go [] l = l
+    go (x:xs) l = go xs (x:l)
 
 {-
 You did it! Now it is time to open pull request with your changes
