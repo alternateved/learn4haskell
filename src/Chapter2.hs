@@ -349,7 +349,10 @@ ghci> :l src/Chapter2.hs
 -}
 subList :: Int -> Int -> [a] -> [a]
 subList start end xs
-        | start < 0 || end < 0 = []
+        | start < 0     = []
+        | end <= 0    = []  
+        | end < start = []
+        | otherwise   = drop start . take (end + 1) $ xs
         | otherwise = drop start . take (end + 1) $ xs
 
 {- |
