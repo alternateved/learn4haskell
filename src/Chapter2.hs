@@ -867,7 +867,13 @@ list.
 rotate :: Int -> [a] -> [a]
 rotate x l
   | x < 0 = []
-  | otherwise = take (length l) $ drop x (cycle l)
+rotate :: Int -> [a] -> [a]
+rotate x l
+  | x < 0 = []
+  | otherwise = take lenL $ drop x' (cycle l)
+  where
+    lenL = length l
+    x' = mod x lenL
 
 {- |
 =💣= Task 12*
