@@ -1010,7 +1010,7 @@ instance Append Gold where
 
 instance Append [a] where
   append :: [a] -> [a] -> [a]
-  append xs ys = xs ++ ys
+  append = (++)
 
 instance (Append a) => Append (Maybe a) where
   append :: Maybe a -> Maybe a -> Maybe a
